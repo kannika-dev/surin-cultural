@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,57 +8,57 @@
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
+
   <style>
-    body { 
-      background-color: #f4f6f8; 
-      font-family: 'Sarabun', sans-serif; 
+    body {
+      background-color: #f4f6f8;
+      font-family: 'Sarabun', sans-serif;
     }
-    
+
     .navbar {
       background-color: #121824 !important;
     }
-    
+
     /* Hero Banner */
     .hero-banner {
-      background: linear-gradient(rgba(18, 24, 36, 0.85), rgba(18, 24, 36, 0.85)), 
-                  url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1200') center/cover no-repeat;
+      background: linear-gradient(rgba(18, 24, 36, 0.85), rgba(18, 24, 36, 0.85)),
+        url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1200') center/cover no-repeat;
       color: #ffffff;
       padding: 70px 20px;
       text-align: center;
       border-bottom: 4px solid #0d9488;
     }
-    
+
     /* ปุ่มเลือกชาติพันธุ์แบบกล่องการ์ด */
-    .ethnic-card {
-  border: none;
-  border-radius: 16px;
-  height: 120px; /* ล็อกความสูงกล่องการ์ด */
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
+    .ethnic-select-card {
+      border: none;
+      border-radius: 16px;
+      height: 120px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-.ethnic-card .card-content {
-  position: absolute;
-  bottom: 15px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  color: #ffffff;
-  z-index: 2;
-}
+    .ethnic-select-card .card-content {
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: #ffffff;
+      z-index: 2;
+    }
 
-/* สถานะเมื่อกดเลือก (มีเส้นขอบสีฟ้า/เขียวเด่นขึ้นมา) */
-.ethnic-card.active {
-  outline: 3px solid #0d6efd;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-}
+    /* สถานะเมื่อกดเลือก */
+    .ethnic-select-card.active {
+      outline: 3px solid #0d6efd;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
 
-.ethnic-card:hover {
-  transform: translateY(-3px);
-}
+    .ethnic-select-card:hover {
+      transform: translateY(-3px);
+    }
 
     /* ตัวกรองหมวดหมู่ */
     .category-pill {
@@ -71,6 +72,7 @@
       color: #475569;
       transition: all 0.2s;
     }
+
     .category-pill.active {
       background: #1e293b;
       color: #fff;
@@ -78,23 +80,26 @@
     }
 
     /* Card Style */
-    .ethnic-card { 
-      border: none; 
-      border-radius: 20px; 
-      box-shadow: 0 6px 18px rgba(0,0,0,0.05); 
-      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    .ethnic-card {
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       overflow: hidden;
       background: #fff;
       cursor: pointer;
     }
-    .ethnic-card:hover { 
-      transform: translateY(-8px); 
-      box-shadow: 0 16px 32px rgba(0,0,0,0.12); 
+
+    .ethnic-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
     }
-    .card-img-top { 
-      height: 220px; 
-      object-fit: cover; 
+
+    .card-img-top {
+      height: 220px;
+      object-fit: cover;
     }
+
     .badge-category {
       background-color: #ccfbf1;
       color: #0f766e;
@@ -105,6 +110,7 @@
     }
   </style>
 </head>
+
 <body class="d-flex flex-column min-vh-100">
 
   <!-- Navbar -->
@@ -120,8 +126,9 @@
         <ul class="navbar-nav ms-auto gap-2">
           <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
           <li class="nav-item"><a class="nav-link" href="silk.html">ภูมิปัญญาผ้าไหม</a></li>
-          <li class="nav-item"><a class="nav-link active fw-bold text-warning" href="ethnic.html">กลุ่มชาติพันธุ์</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">ประเพณี & วัฒนธรรม</a></li>
+          <li class="nav-item"><a class="nav-link active fw-bold text-warning" href="ethnic.html">กลุ่มชาติพันธุ์</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="tradition.html">ประเพณี & วัฒนธรรม</a></li>
         </ul>
       </div>
     </div>
@@ -138,37 +145,39 @@
     </div>
   </div>
 
-  <!-- ปุ่มเลือกชาติพันธุ์ -->
-  <div class="row g-3 mb-4">
-    <!-- ชาวกูย (ภาพช้างสุรินทร์/วิถีคนเลี้ยงช้าง) -->
-    <div class="col-12 col-md-4">
-      <div class="card ethnic-card active" onclick="selectEthnic('ชาวกูย', this)" 
-           style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://kclbymrasxwonebprhcz.supabase.co/storage/v1/object/public/calculate_image/ethnic/Kuy.jpg') center/cover no-repeat;">
-        <div class="card-content">
-          <h5 class="fw-bold mb-1">ชาวกูย</h5>
-          <small>หมอช้าง & สีกระบอก</small>
+  <div class="container">
+    <!-- ปุ่มเลือกชาติพันธุ์ -->
+    <div class="row g-3 mb-4">
+      <!-- ชาวกูย -->
+      <div class="col-12 col-md-4">
+        <div class="card ethnic-select-card active" onclick="selectEthnic('ชาวกูย', this)"
+          style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://kclbymrasxwonebprhcz.supabase.co/storage/v1/object/public/calculate_image/ethnic/Kuy.jpg') center/cover no-repeat;">
+          <div class="card-content">
+            <h5 class="fw-bold mb-1">ชาวกูย</h5>
+            <small>หมอช้าง & สีกระบอก</small>
+          </div>
         </div>
       </div>
-    </div>
-  
-    <!-- ชาวเขมร (ภาพงานทอผ้าพื้นเมือง/สถาปัตยกรรมหิน) -->
-    <div class="col-12 col-md-4">
-      <div class="card ethnic-card" onclick="selectEthnic('ชาวเขมร', this)" 
-           style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://kclbymrasxwonebprhcz.supabase.co/storage/v1/object/public/calculate_image/ethnic/Khmer.jpg') center/cover no-repeat;">
-        <div class="card-content">
-          <h5 class="fw-bold mb-1">ชาวเขมร</h5>
-          <small>ผ้าโฮล & แซนโฎนตา</small>
+
+      <!-- ชาวเขมร -->
+      <div class="col-12 col-md-4">
+        <div class="card ethnic-select-card" onclick="selectEthnic('ชาวเขมร', this)"
+          style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://kclbymrasxwonebprhcz.supabase.co/storage/v1/object/public/calculate_image/ethnic/Khmer.jpg') center/cover no-repeat;">
+          <div class="card-content">
+            <h5 class="fw-bold mb-1">ชาวเขมร</h5>
+            <small>ผ้าโฮล & แซนโฎนตา</small>
+          </div>
         </div>
       </div>
-    </div>
-  
-    <!-- ชาวไทยอีสาน (ภาพวิถีชีวิตทุ่งนา/เกษตรกรรม) -->
-    <div class="col-12 col-md-4">
-      <div class="card ethnic-card" onclick="selectEthnic('ชาวไทยอีสาน', this)" 
-           style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://kclbymrasxwonebprhcz.supabase.co/storage/v1/object/public/calculate_image/ethnic/loa.jpg') center/cover no-repeat;">
-        <div class="card-content">
-          <h5 class="fw-bold mb-1">ชาวไทยอีสาน</h5>
-          <small>ผ้าขิด & เสียงแคน</small>
+
+      <!-- ชาวไทยอีสาน -->
+      <div class="col-12 col-md-4">
+        <div class="card ethnic-select-card" onclick="selectEthnic('ชาวไทยอีสาน', this)"
+          style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://kclbymrasxwonebprhcz.supabase.co/storage/v1/object/public/calculate_image/ethnic/loa.jpg') center/cover no-repeat;">
+          <div class="card-content">
+            <h5 class="fw-bold mb-1">ชาวไทยอีสาน</h5>
+            <small>ผ้าขิด & เสียงแคน</small>
+          </div>
         </div>
       </div>
     </div>
@@ -178,11 +187,11 @@
   <div class="container mb-4">
     <div class="d-flex justify-content-center gap-2 flex-wrap">
       <span class="category-pill active" onclick="filterCategory('ทั้งหมด', this)">ทั้งหมด</span>
-      <span class="category-pill" onclick="filterCategory('อาหาร', this)"> อาหาร</span>
+      <span class="category-pill" onclick="filterCategory('อาหาร', this)">อาหาร</span>
       <span class="category-pill" onclick="filterCategory('การแต่งกาย', this)">ผ้า เครื่องแต่งกาย</span>
       <span class="category-pill" onclick="filterCategory('ขนบธรรมเนียม', this)">ประเพณี</span>
-      <span class="category-pill" onclick="filterCategory('ภาษาถิ่น', this)"> ภาษาถิ่น</span>
-      <span class="category-pill" onclick="filterCategory('เครื่องใช้', this)"> เครื่องใช้</span>
+      <span class="category-pill" onclick="filterCategory('ภาษาถิ่น', this)">ภาษาถิ่น</span>
+      <span class="category-pill" onclick="filterCategory('เครื่องใช้', this)">เครื่องใช้</span>
     </div>
   </div>
 
@@ -206,7 +215,8 @@
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-4 text-center">
-          <img id="modalImage" src="" class="img-fluid rounded-4 shadow-sm mb-4 w-100" style="max-height: 420px; object-fit: cover;">
+          <img id="modalImage" src="" class="img-fluid rounded-4 shadow-sm mb-4 w-100"
+            style="max-height: 420px; object-fit: cover;">
           <div class="d-flex justify-content-center gap-2 mb-3">
             <span id="modalCategory" class="badge-category fs-6"></span>
           </div>
@@ -230,7 +240,7 @@
 
   <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  
+
   <script>
     const SUPABASE_URL = 'https://kclbymrasxwonebprhcz.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtjbGJ5bXJhc3h3b25lYnByaGN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY2MTM2NTcsImV4cCI6MjEwMjE4OTY1N30.3tdO1N3cd0bkEczBcDTOTG3u0k21pVfTi-IwI_2oLtU';
@@ -239,9 +249,31 @@
     let currentEthnic = 'ชาวกูย';
     let currentCategory = 'ทั้งหมด';
 
+    // ฟังก์ชันช่วยแกะลิงก์รูปภาพรองรับทั้งแบบ String เดี่ยว และ JSON Array `["url"]`
+    function parseImageUrl(imageField) {
+      const defaultImg = 'https://via.placeholder.com/400x240?text=No+Image';
+      if (!imageField) return defaultImg;
+
+      if (Array.isArray(imageField)) {
+        return imageField.length > 0 ? imageField[0] : defaultImg;
+      }
+
+      if (typeof imageField === 'string') {
+        if (imageField.startsWith('[') && imageField.endsWith(']')) {
+          try {
+            const parsed = JSON.parse(imageField);
+            return Array.isArray(parsed) && parsed.length > 0 ? parsed[0] : defaultImg;
+          } catch (e) {
+            return imageField;
+          }
+        }
+        return imageField;
+      }
+      return defaultImg;
+    }
+
     async function fetchEthnicData() {
       try {
-        // ใช้ Direct REST API Fetch พร้อมส่ง Header ที่ถูกต้องสำหรับ Publishable Key
         const response = await fetch(`${SUPABASE_URL}/rest/v1/ethnic_groups?select=*`, {
           method: 'GET',
           headers: {
@@ -283,14 +315,13 @@
 
     function renderEthnicCards() {
       const container = document.getElementById('ethnicContainer');
-      
-      // ใช้ .trim() ตัดช่องว่าง เพื่อป้องกันปัญหาข้อมูลไม่ตรงกัน
-      let filteredData = allEthnicData.filter(item => 
+
+      let filteredData = allEthnicData.filter(item =>
         item.group_name && item.group_name.trim() === currentEthnic.trim()
       );
-      
+
       if (currentCategory !== 'ทั้งหมด') {
-        filteredData = filteredData.filter(item => 
+        filteredData = filteredData.filter(item =>
           item.category && item.category.trim() === currentCategory.trim()
         );
       }
@@ -303,48 +334,51 @@
         return;
       }
 
-      container.innerHTML = filteredData.map(item => `
-  <div class="col-12 col-md-6 col-lg-4 mb-4">
-    <div class="card h-100 ethnic-card shadow-sm border-0 rounded-4" onclick="openDetailModal(${item.id})">
-      <!-- ส่วนรูปภาพ (ถ้าไม่มีรูป จะโชว์รูปตั้งต้นสวยๆ แทน) -->
-      <img src="${item.image || item.image_url || 'https://via.placeholder.com/400x240?text=' + encodeURIComponent(item.category)}" 
-           class="card-img-top rounded-top-4" 
-           alt="${item.category}"
-           style="height: 180px; object-fit: cover;">
-      
-      <div class="card-body d-flex flex-column p-4">
-        <!-- เอาชื่อกลุ่มมาไว้ข้างบนเล็กๆ -->
-        <span class="badge bg-secondary align-self-start mb-2 px-3 py-2 rounded-pill">
-          ${item.group_name}
-        </span>
-        
-        <!-- หัวข้อตัวหนาใหญ่: ให้โชว์เป็น "หมวดหมู่" (เช่น การแต่งกาย / อาหาร) -->
-        <h4 class="card-title fw-bold text-dark mb-2">
-          ${item.category}
-        </h4>
-        
-        <!-- คำอธิบายย่อย -->
-        <p class="card-text text-muted small mb-3 flex-grow-1">
-          ${item.description || 'กดเพื่อดูรายละเอียดเพิ่มเติมเกี่ยวกับ' + item.category}
-        </p>
-        
-        <button class="btn btn-outline-primary btn-sm rounded-pill mt-auto align-self-start px-3">
-          👁️ ดูรายละเอียด${item.category}
-        </button>
-      </div>
-    </div>
-  </div>
-`).join('');
+      container.innerHTML = filteredData.map(item => {
+        const imageUrl = parseImageUrl(item.image || item.image_url);
+        return `
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 ethnic-card shadow-sm border-0 rounded-4" onclick="openDetailModal(${item.id})">
+              <img src="${imageUrl}" 
+                   class="card-img-top rounded-top-4" 
+                   alt="${item.category}"
+                   style="height: 180px; object-fit: cover;"
+                   onerror="this.src='https://via.placeholder.com/400x240?text=Image+Error'">
+              
+              <div class="card-body d-flex flex-column p-4">
+                <span class="badge bg-secondary align-self-start mb-2 px-3 py-2 rounded-pill">
+                  ${item.group_name}
+                </span>
+                
+                <h4 class="card-title fw-bold text-dark mb-2">
+                  ${item.category}
+                </h4>
+                
+                <p class="card-text text-muted small mb-3 flex-grow-1">
+                  ${item.description || 'กดเพื่อดูรายละเอียดเพิ่มเติมเกี่ยวกับ' + item.category}
+                </p>
+                
+                <button class="btn btn-outline-primary btn-sm rounded-pill mt-auto align-self-start px-3">
+                  👁️ ดูรายละเอียด${item.category}
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
     }
+
     function openDetailModal(id) {
       const item = allEthnicData.find(d => d.id === id);
       if (!item) return;
+
+      const modalImageUrl = parseImageUrl(item.image || item.image_url);
 
       document.getElementById('modalHeaderGroup').innerText = `กลุ่ม${item.group_name}`;
       document.getElementById('modalCategory').innerText = item.category;
       document.getElementById('modalTitle').innerText = item.title;
       document.getElementById('modalDescription').innerText = item.description || 'ไม่มีข้อมูลรายละเอียดเพิ่มเติม';
-      document.getElementById('modalImage').src = item.image || 'https://via.placeholder.com/600x400?text=No+Image';
+      document.getElementById('modalImage').src = modalImageUrl;
 
       const modal = new bootstrap.Modal(document.getElementById('ethnicDetailModal'));
       modal.show();
@@ -353,4 +387,5 @@
     fetchEthnicData();
   </script>
 </body>
+
 </html>
