@@ -21,13 +21,13 @@
       font-family: 'Prompt', sans-serif;
     }
 
-    /* Hero Section */
+    /* Hero Section - ปรับใช้รูปภาพที่คุณส่งมาเป็นภาพพื้นหลัง */
     .hero-banner {
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
-        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop');
+      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),
+        url('https://kclbymrasxwonebprhcz.supabase.co/storage/v1/object/public/calculate_image/AA.jpg');
       background-size: cover;
       background-position: center;
-      padding: 100px 0;
+      padding: 110px 0;
     }
 
     /* ตกแต่งการ์ด */
@@ -183,7 +183,6 @@
 
   <!-- Script สำหรับจัดการดึงข้อมูลและแก้อาร์เรย์รูปภาพ JSON -->
   <script>
-    // Helper function สำหรับเลือกรูปแรกกรณีข้อมูลเป็น JSON / Array [ "url" ]
     function getImageUrl(imageField) {
       const defaultImg = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600&auto=format&fit=crop';
       if (!imageField) return defaultImg;
@@ -193,7 +192,6 @@
       }
 
       if (typeof imageField === 'string') {
-        // กรณีบันทึกเป็น string JSON มา เช่น '["https://..."]'
         if (imageField.startsWith('[') && imageField.endsWith(']')) {
           try {
             const parsed = JSON.parse(imageField);
@@ -207,10 +205,9 @@
       return defaultImg;
     }
 
-    // ฟังก์ชันดึงข้อมูลจาก Backend บน Render
     async function fetchFeaturedHeritage() {
       const grid = document.getElementById('featuredHeritageGrid');
-      const API_URL = 'https://surin-cms.onrender.com/api/heritages'; // ปรับ URL Backend Render ของคุณตรงนี้
+      const API_URL = 'https://surin-cms.onrender.com/api/heritages';
 
       try {
         const response = await fetch(API_URL);
@@ -218,7 +215,6 @@
         const items = await response.json();
 
         if (items && items.length > 0) {
-          // ดึง 3 รายการแรกมาแสดง
           const displayItems = items.slice(0, 3);
           grid.innerHTML = displayItems.map(item => {
             const imgUrl = getImageUrl(item.image);
@@ -241,7 +237,7 @@
         }
       } catch (err) {
         console.warn('API fetch fail, display standard mode:', err);
-        grid.innerHTML = ''; // หากยังไม่เปิด backend สามารถซ่อนหรือให้แสดงเป็นการ์ดว่างได้
+        grid.innerHTML = '';
       }
     }
 
