@@ -18,10 +18,10 @@
             font-family: 'Prompt', sans-serif;
         }
 
-        /* Page Header Banner */
+        /* Page Header Banner - เปลี่ยนเป็นรูป DD.jpg และคุมโทนความมืดให้เท่ากัน */
         .page-header {
-            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),
-                url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1600&auto=format&fit=crop');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+                url('https://kclbymrasxwonebprhcz.supabase.co/storage/v1/object/public/calculate_image/DD.jpg');
             background-size: cover;
             background-position: center;
             padding: 60px 0;
@@ -102,7 +102,7 @@
     <!-- หัวข้อประจำหน้า (Hero Banner) -->
     <div class="page-header text-white text-center shadow mb-5">
         <div class="container">
-            <h1 class="fw-bold mb-2"><i class="bi bi-fire text-warning me-2"></i>ประเพณี วัฒนธรรม</h1>
+            <h1 class="fw-bold mb-2"><i class="bi bi-fire text-warning me-2"></i>ประเพณี & วัฒนธรรม</h1>
             <p class="lead opacity-75 mb-0 fw-light">สืบสานความเชื่อ พิธีกรรม งานบุญประเพณี
                 และการแสดงพื้นบ้านประจำจังหวัดสุรินทร์</p>
         </div>
@@ -173,7 +173,6 @@
         let traditionsData = [];
         const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=600&auto=format&fit=crop";
 
-        // ฟังก์ชันช่วยแปลงฟิลด์ image (text[]) ให้เป็น Array ของ URL เสมอ
         function parseImages(imageField) {
             if (!imageField) return [DEFAULT_IMAGE];
 
@@ -196,7 +195,6 @@
             return [DEFAULT_IMAGE];
         }
 
-        // ดึงข้อมูลจากตาราง traditions ใน Supabase
         async function loadTraditions() {
             try {
                 const response = await fetch(`${SUPABASE_URL}/rest/v1/traditions?select=*`, {
@@ -219,11 +217,9 @@
                 traditionsData = traditions;
 
                 traditions.forEach((item, index) => {
-                    // ดึงค่าฟิลด์ image, title, category, description ตามโครงสร้างใน DB
                     const images = parseImages(item.image);
                     const carouselId = `carouselTradition_${index}`;
 
-                    // สร้างภาพสไลด์ Carousel สำหรับการ์ดใบนี้
                     const carouselItemsHtml = images.map((imgUrl, imgIdx) => `
             <div class="carousel-item ${imgIdx === 0 ? 'active' : ''}">
               <img src="${imgUrl}" alt="${item.title || 'ประเพณี'}" onerror="this.src='${DEFAULT_IMAGE}'">
@@ -234,7 +230,6 @@
             <div class="col-12 col-md-6 col-lg-4">
               <div class="card h-100 shadow-sm border-0 custom-card">
                 
-                <!-- สไลด์ภาพเล่นให้อัตโนมัติทุก 3.5 วินาที -->
                 <div id="${carouselId}" class="carousel slide card-carousel" data-bs-ride="carousel" data-bs-interval="3500">
                   <div class="carousel-inner">
                     ${carouselItemsHtml}
@@ -282,7 +277,6 @@
             }
         }
 
-        // ฟังก์ชันเปิด Modal แสดงข้อมูลเต็ม + คลังภาพทั้งหมด
         function openTraditionModal(index) {
             const item = traditionsData[index];
             if (!item) return;
@@ -294,11 +288,9 @@
             document.getElementById('modalCategory').innerText = item.category || 'ประเพณี/วัฒนธรรม';
             document.getElementById('modalDescription').innerText = item.description || 'ไม่มีรายละเอียดเพิ่มเติม';
 
-            // ตั้งรูปแรกเป็นรูปใหญ่หลัก
             const modalMainImg = document.getElementById('modalMainImage');
             modalMainImg.src = images[0];
 
-            // สร้าง Gallery รูปย่อยทั้งหมด ให้คลิกแล้วสลับไปแสดงรูปหลักด้านบนได้
             const galleryGrid = document.getElementById('modalGalleryGrid');
             galleryGrid.innerHTML = images.map((imgUrl) => `
         <div class="col-4 col-md-3">
@@ -312,7 +304,6 @@
             modal.show();
         }
 
-        // เรียกทำงานเมื่อโหลด DOM เสร็จเรียบร้อย
         document.addEventListener('DOMContentLoaded', () => {
             loadTraditions();
         });
